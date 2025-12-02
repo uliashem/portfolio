@@ -8,7 +8,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // ---> particles.js init
+ 
     window.particlesJS("particles-js", {
       particles: {
         number: { value: 150, density: { enable: true, value_area: 800 }},
@@ -43,42 +43,23 @@ const Home = () => {
       retina_detect: true
     });
 
-    // ---> typing effect
-    const split = new SplitType("#typingText", { types: "chars" });
+    const split = new SplitType("#typingText", { types: "words, chars" });
 
-    gsap.from(split.chars, {
-      opacity: 0,
-      y: 6,
-      duration: 0.08,
-      stagger: 0.07,
-      ease: "none",
-      onComplete: () => {
-        gsap.to(".line-2", {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power3.out"
-        });
+  gsap.from(split.chars, {
+    opacity: 0,
+    y: 6,
+    duration: 0.08,
+    stagger: 0.07,
+    ease: "none",
+    onComplete: () => {
+      gsap.to(".line-2", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" });
+      gsap.to(".line-3", { opacity: 1, y: 0, delay: 0.25, duration: 0.75, ease: "power3.out" });
+      gsap.to(".home-btn", { opacity: 1, y: 0, delay: 0.55, duration: 0.8, ease: "power3.out" });
+    }
+  });
 
-        gsap.to(".line-3", {
-          opacity: 1,
-          y: 0,
-          delay: 0.25,
-          duration: 0.75,
-          ease: "power3.out"
-        });
+  return () => split.revert();
 
-        gsap.to(".home-btn", {
-          opacity: 1,
-          y: 0,
-          delay: 0.55,
-          duration: 0.8,
-          ease: "power3.out"
-        });
-      }
-    });
-
-    return () => split.revert();
   }, []);
 
   return (

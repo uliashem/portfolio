@@ -70,7 +70,6 @@ html,
 body {
 	min-height: 100vh;
 	font-family: "Open Sans", sans-serif;
-	letter-spacing: -0.5px;
 	background-color: var(--white);
 	color: var(--black);
 }
@@ -94,7 +93,7 @@ body {
 }
 
 .section {
-	padding: 70px 0;
+	padding: 140px 0 70px;
 }
 
 .title-1 {
@@ -136,55 +135,103 @@ body {
   color: var(--white);
   background: var(--accent);
 
-  border-radius: 12px;
-  border: none;
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
 
+  box-shadow:
+    0 6px 18px rgba(92, 98, 236, 0.28),
+    0 0 14px rgba(255, 255, 255, 0.22) inset;
+
+  border-radius: 14px;
   cursor: pointer;
-  transition: 
-    background 0.25s ease,
+
+  transition:
     transform 0.25s ease,
-    box-shadow 0.25s ease;
-  box-shadow: 0 6px 18px rgba(92, 98, 236, 0.25);
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
 
-
 .btn:hover {
-  background: #4d53d8;
+  background: #4a4fc6;
   transform: translateY(-3px);
-  box-shadow: 0 10px 26px rgba(92, 98, 236, 0.35);
+
+  box-shadow:
+    0 10px 26px rgba(92, 98, 236, 0.35),
+    0 0 20px rgba(255, 255, 255, 0.35) inset;
 }
 
 .btn:active {
-  transform: scale(0.97);
+  transform: scale(0.96);
+  backdrop-filter: blur(18px) saturate(180%);
 }
+
 
 /* Btn outline */
 
 .btn-outline {
-	display: flex;
-	column-gap: 10px;
-	align-items: center;
-	height: 48px;
-	padding: 12px 20px;
-	border-radius: 5px;
-	border: 1px solid #000;
-	background-color: #fff;
-	color: #000;
-	transition: opacity 0.2s ease-in;
+	display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 28px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.15); /* стеклянная прозрачность */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  backdrop-filter: blur(12px) saturate(130%); /* главный эффект */
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+
+  color: var(--black);
+  font-size: 17px;
+  font-weight: 500;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 0 20px rgba(255, 255, 255, 0.25) inset;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+
+}
+
+.btn-outline img {
+  width: 22px;
+  opacity: 0.9;
+  transition: opacity 0.25s ease;
 }
 
 .btn-outline:hover {
-	opacity: 0.8;
+	transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.12),
+    0 0 30px rgba(255, 255, 255, 0.35) inset;
+}
+
+.btn-outline:hover img {
+  opacity: 1;
 }
 
 .btn-outline:active {
-	position: relative;
-	top: 1px;
+	transform: scale(0.96);
+  backdrop-filter: blur(14px);
 }
 
 /* Navbar */
 
 .nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 	padding: 20px 0;
 	background-color: var(--nav-bg);
 	border-bottom: 1px solid var(--nav-border);
@@ -280,7 +327,7 @@ body {
 	width: 100vw;
 	height: 100vh;
 	background: #ffffff;
-	z-index: 999; 
+	z-index: 2000; 
 	display: none;
 	justify-content: center;
 	align-items: center;
@@ -300,6 +347,7 @@ body {
 	flex-direction: column;
 	gap: 40px;
 	align-items: center;
+	padding: 0;
 }
 
 .mobile-menu a {
@@ -307,46 +355,6 @@ body {
 	color: #000000 !important;
 	font-weight: 600;
 	text-decoration: none;
-}
-
-
-/* Footer */
-
-.footer {
-	padding: 12px 0;
-	background-color: var(--footer-bg);
-	color: var(--footer-text);
-	font-size: 14px;
-}
-
-.footer__inner {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 20px;
-	flex-wrap: wrap;
-}
-
-.footer__links {
-	display: flex;
-	gap: 16px;
-	align-items: center;
-}
-
-.footer__links a {
-	color: var(--footer-text);
-	display: flex;
-	align-items: center;
-	transition: opacity .2s;
-}
-
-.footer__links a:hover {
-	opacity: 0.6;
-}
-
-.footer__links svg {
-	width: 20px;
-	height: 20px;
 }
 
 /*Header */ 
@@ -359,7 +367,8 @@ body {
 }
 
 .header {
-	padding: 40px 0;
+  padding-top: 90px;  
+  padding-bottom: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -370,8 +379,8 @@ body {
 	color: var(--header-text);
 	text-align: center;
 	flex: 1;
-	height: auto;
-	min-height: auto;
+	height: 100hv;
+  position: relative;
 }
 
 .header__wrapper {
@@ -415,7 +424,20 @@ body {
   transform: translateY(-30px); 
 }
 
+#typingText {
+  display: inline-block; 
+  white-space: normal;
+}
 
+#typingText .word {
+  display: inline-block;
+  white-space: nowrap;  
+}
+
+#typingText .char {
+  display: inline-block;
+  white-space: pre; 
+}
 
 /* Projects  */
 
@@ -423,7 +445,9 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	align-items: center;
 	gap: 30px;
+	padding: 0;
 }
 
 /* Project details */
@@ -787,8 +811,52 @@ body {
   to   { transform: scale(1); opacity: 1; }
 }
 
+/* Footer */
+
+.footer {
+	padding: 12px 0;
+	background-color: var(--footer-bg);
+	color: var(--footer-text);
+	font-size: 14px;
+}
+
+.footer__inner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.footer__links {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+}
+
+.footer__links a {
+	color: var(--footer-text);
+	display: flex;
+	align-items: center;
+	transition: opacity .2s;
+}
+
+.footer__links a:hover {
+	opacity: 0.6;
+}
+
+.footer__links svg {
+	width: 20px;
+	height: 20px;
+}
+
 
 @media (max-width: 900px) {
+
+  .section {
+	padding-top: 110px;
+  }
+
 	.cert-row {
     gap: 26px;
 		min-height: 260px;
@@ -918,7 +986,6 @@ body {
 @media (max-width: 620px) {
 
 	.header {
-    padding: 32px 0;
     min-height: unset;
     display: flex;
     align-items: center;
@@ -953,7 +1020,7 @@ body {
   }
 
   .btn.home-btn {
-    margin-top: 28px;
+    margin-top: 15px;
     padding: 14px 28px;
     font-size: 16px;
   }
@@ -963,7 +1030,7 @@ body {
 	}
 
 	.section {
-		padding: 40px 0;
+		padding: 90px 0;
 	}
 
 	.project {
@@ -1014,19 +1081,24 @@ body {
   }
 
 	.footer {
-		padding: 14px 0;
+		padding: 10px 0;
 		font-size: 13px;
 	}
 
 	.footer__inner {
 		flex-direction: column;
 		align-items: center;
-		gap: 10px;
+    gap: 12px;
 	}
+
+  .footer__inner p {
+    margin: 5px;
+  }
 
 	.footer__links {
 		gap: 12px;
 		padding: 0;
+    margin: 5px;
 	}
 
 	.footer__links svg {
