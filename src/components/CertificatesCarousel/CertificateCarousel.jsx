@@ -105,6 +105,8 @@ const CertificateCarousel = () => {
 
   const activeIndex = Math.floor(count / 2);
 
+  
+
   return (
     <div className="cert-carousel-container">
       <div className="cert-btn" ref={btnRef}>
